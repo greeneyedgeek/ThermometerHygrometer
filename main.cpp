@@ -1,7 +1,7 @@
 /*
 
 	Project:	ThermometerHygrometer
-	File:		ThermometerHygrometer.cpp
+	File:		main.cpp
 	Created:	2019-01-26
 	Modified:	2019-02-06
 	Author:		Gabriel Fontaine-Escobar
