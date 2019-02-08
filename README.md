@@ -5,7 +5,7 @@
 <h2>Hardware Required</h2>
 
 <ul>
-  <li>Arduino Board</li>
+  <li>Arduino Nano Board</li>
   <li>LCD Screen (compatible with Hitachi <span class="wikiword">HD44780</span> driver)</li>
   <li>DHT22 Sensor</li>
   <li>Pin headers to solder to the LCD display pins</li>
