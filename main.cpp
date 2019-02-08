@@ -3,7 +3,7 @@
 	Project:	ThermometerHygrometer
 	File:		main.cpp
 	Created:	2019-01-26
-	Modified:	2019-02-06
+	Modified:	2019-02-07
 	Author:		Gabriel Fontaine-Escobar
 
 	LCD Hello World example code was used as a starting point.
@@ -49,11 +49,7 @@ const uint8_t PIN_INTERRUPT{2};
 const uint8_t PIN_UNITS{8};
 
 // A constant for our timer
-const uint16_t base_delay{1000};
-
-// Maximum and minimum values
-const float MAX{9999};
-const float MIN{-9999};
+const uint16_t BASE_DELAY{1000};
 
 // A variable to store the millis() value
 uint32_t timer;
@@ -64,39 +60,21 @@ ns_sensors::Sensors sensors;
 // To call our display functions
 ns_out::Display display;
 
-// To toggle between Celsius and Fahrenheit
-bool is_fahrenheit{false};
-
-// To know if need to display the stats
+// To know if we need to display the stats
 bool is_display_stats{false};
-
-// To store our current data
-float current_temperature;
-float current_humidity;
-float heat_index;
-
-// To keep track of the temperature and humidity
-float max_temperature{MIN}, min_temperature{MAX};
-float max_humidity{MIN},  min_humidity{MAX};
 
 // Updates the temperature and humidity data to the LCD and Serial
 void update()
 {
-	// Fetch new data
-	current_temperature = sensors.get_temperature(is_fahrenheit);
-	current_humidity = sensors.get_humidity();
-	heat_index = sensors.get_heat_index(current_temperature, current_humidity, is_fahrenheit);
-
-	// Check if we need to update max and min values
-	max_temperature = current_temperature > max_temperature ? current_temperature : max_temperature;
-	min_temperature = current_temperature < min_temperature ? current_temperature : min_temperature;
-	max_humidity = current_humidity > max_humidity ? current_humidity : max_humidity;
-	min_humidity = current_humidity < min_humidity ? current_humidity : min_humidity;
+	// To store our current data
+	float current_temperature{sensors.update_temperature()};
+	float current_humidity{sensors.update_humidity()};
+	float current_heat_index{sensors.update_heat_index(&current_temperature, &current_humidity)};
 
 	// Output data
-	display.lcd_out(&current_temperature, &current_humidity, &is_fahrenheit);
-	display.lcd_heat_index(&heat_index, &is_fahrenheit);
-	display.serial_out(&current_temperature, &current_humidity, &heat_index);
+	display.lcd_out(current_temperature, current_humidity, sensors.get_units());
+	display.lcd_heat_index(current_heat_index, sensors.get_units());
+	display.serial_out(current_temperature, current_humidity, current_heat_index, sensors.get_units());
 
 	// Reset the timer
 	timer = millis();
@@ -109,10 +87,10 @@ void display_stats()
 	update();
 
 	// Display the stats on the LCD screen
-	display.lcd_stats_temp(&max_temperature, &min_temperature, &is_fahrenheit);
-	delay(2*base_delay);
-	display.lcd_stats_hum(&max_humidity, &min_humidity);
-	delay(2*base_delay);
+	display.lcd_stats_temp(sensors.get_max_temperature(), sensors.get_min_temperature(), sensors.get_units());
+	delay(2*BASE_DELAY);
+	display.lcd_stats_hum(sensors.get_max_humidity(), sensors.get_min_humidity());
+	delay(2*BASE_DELAY);
 
 	// Reset the bool value
 	is_display_stats = !is_display_stats;
@@ -124,25 +102,8 @@ void display_stats()
 // Changes the units then updates the display
 void toggle_units()
 {
-	// To ensure the function is only called once when the switch is activated
-	delay(base_delay);
-
-	// Toggle between Celsius and Fahrenheit
-	if (is_fahrenheit)
-	{
-		max_temperature = sensors.convertFtoC(max_temperature);
-		min_temperature = sensors.convertFtoC(min_temperature);
-
-	} else
-	{
-		max_temperature = sensors.convertCtoF(max_temperature);
-		min_temperature = sensors.convertCtoF(min_temperature);
-	}
-
-	// Change the bool value
-	is_fahrenheit = !is_fahrenheit;
-
-	// Update the display to see the change
+	delay(BASE_DELAY);
+	sensors.toggle_units();
 	update();
 }
 
@@ -162,7 +123,7 @@ void setup()
 
 	// A loading screen to let the sensor output its first data
 	display.init_output();
-	delay(3*base_delay);
+	delay(3*BASE_DELAY);
 	update();
 
 	// Set timer value
@@ -172,7 +133,7 @@ void setup()
 void loop()
 {
 	// Update data every minute
-	if (millis() - timer > 60*base_delay) { update(); }
+	if (millis() - timer > 60*BASE_DELAY) { update(); }
 
 	// Display min and max values if is_display_stats is true
 	if (is_display_stats) { display_stats(); }

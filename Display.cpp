@@ -3,7 +3,7 @@
 	Project:	ThermometerHygrometer
 	File:		Display.cpp
 	Created:	2019-01-26
-	Modified:	2019-02-06
+	Modified:	2019-02-07
 	Author:		Gabriel Fontaine-Escobar
 
 */
@@ -24,19 +24,19 @@ LiquidCrystal Display::lcd(RS, EN, D4, D5, D6, D7);
 void Display::init_output()
 {
 	lcd.begin(LCD_LENGHT, LCD_HEIGHT);
-	lcd << "WEATHER STATION!";
+	lcd << "WEATHER STATION";
 
 	Serial.begin(9600);
 }
 
-void Display::lcd_out(float *temperature, float *humidity, bool *isFahrenheit)
+void Display::lcd_out(float temperature, float humidity, char units)
 {
 
 	lcd.setCursor(0, 0);
 		lcd
-		<< _FLOAT(*temperature,2) << (char)223
-		<< (*isFahrenheit ? "F " : "C ")
-		<< _FLOAT(*humidity, 2) << "%   ";
+		<< _FLOAT(temperature,2) << (char)223
+		<< units << ' '
+		<< _FLOAT(humidity, 2) << "%   ";
 
 }
 
@@ -48,48 +48,47 @@ void Display::lcd_clear_bottom()
 
 }
 
-void Display::lcd_heat_index(float *heat_index, bool *isFahrenheit)
+void Display::lcd_heat_index(float heat_index, char units)
 {
 
 	lcd.setCursor(0, 1);
-	lcd << "Heat Index: " << _FLOAT(*heat_index,0) << (char)223
-	<< (*isFahrenheit ? "F " : "C ");
+	lcd << "Heat Index: " << _FLOAT(heat_index,0) << (char)223
+	<< units;
 
 }
 
-void Display::lcd_stats_temp(float *max_temperature, float *min_temperature, bool *isFahrenheit)
+void Display::lcd_stats_temp(float max_temperature, float min_temperature, char units)
 {
 
 	lcd_clear_bottom();
 	lcd.setCursor(0, 1);
 	lcd
-	<< _FLOAT(*min_temperature, 2)
-	<< " -> " << _FLOAT(*max_temperature, 2)
-	<< (char)223 << (*isFahrenheit ? "F " : "C ");
+	<< _FLOAT(min_temperature, 2)
+	<< " -> " << _FLOAT(max_temperature, 2)
+	<< (char)223 << units;
 
 
 }
 
-void Display::lcd_stats_hum(float *max_humidity, float *min_humidity)
+void Display::lcd_stats_hum(float max_humidity, float min_humidity)
 {
 
 	lcd_clear_bottom();
 	lcd.setCursor(0, 1);
 	lcd
-	<< _FLOAT(*min_humidity, 2)
-	<< " -> " << _FLOAT(*max_humidity, 2)
+	<< _FLOAT(min_humidity, 2)
+	<< " -> " << _FLOAT(max_humidity, 2)
 	<< " %";
 
 }
 
-void Display::serial_out(float *temperature, float *humidity, float *heat_index)
+void Display::serial_out(float temperature, float humidity, float heat_index, char units)
 {
 
 	Serial
-	<< "Temperature: " << _FLOAT(*temperature,2)
-	<< " Celsius, Humidity: " << _FLOAT(*humidity, 2)
-	<< " %, Heat Index: " << _FLOAT(*heat_index,2)
-	<< " Celsius" << endl;
+	<< "Temperature: " << _FLOAT(temperature,2) << units
+	<< " Humidity: " << _FLOAT(humidity, 2)
+	<< " %, Heat Index: " << _FLOAT(heat_index,2) << units << endl;
 	Serial.flush();
 
 }
