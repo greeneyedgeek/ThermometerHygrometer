@@ -84,16 +84,12 @@ void display_stats()
 	update();
 
 	// Display the stats on the LCD screen
-	display.lcd_stats_temp(sensors.get_max_temperature(), sensors.get_min_temperature(), sensors.get_units());
-	delay(2*BASE_DELAY);
-	display.lcd_stats_hum(sensors.get_max_humidity(), sensors.get_min_humidity());
-	delay(2*BASE_DELAY);
+	display.lcd_stats(sensors.get_max_temperature(), sensors.get_min_temperature(), sensors.get_units(),
+						   sensors.get_max_humidity(), sensors.get_min_humidity(), sensors.get_heat_index());
 
 	// Reset the bool value
 	is_display_stats = !is_display_stats;
 
-	// Update the display to get back to the main display
-	update();
 }
 
 // Changes the units then updates the display

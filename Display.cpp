@@ -24,7 +24,7 @@ LiquidCrystal Display::lcd(RS, EN, D4, D5, D6, D7);
 void Display::init_output()
 {
 	lcd.begin(LCD_LENGHT, LCD_HEIGHT);
-	lcd << "WEATHER STATION!";
+	lcd << "WEATHER STATION";
 
 	Serial.begin(9600);
 }
@@ -54,6 +54,18 @@ void Display::lcd_heat_index(float heat_index, char units)
 	lcd.setCursor(0, 1);
 	lcd << "Heat Index: " << _FLOAT(heat_index,0) << (char)223
 	<< units;
+
+}
+
+void Display::lcd_stats(float max_temperature, float min_temperature, char units,
+						   float max_humidity, float min_humidity, float heat_index)
+{
+
+	lcd_stats_temp(max_temperature, min_temperature, units);
+	delay(2000);
+	lcd_stats_hum(max_humidity, min_humidity);
+	delay(2000);
+	lcd_heat_index(heat_index, units);
 
 }
 
