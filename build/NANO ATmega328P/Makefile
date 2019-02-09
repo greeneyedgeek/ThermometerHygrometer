@@ -12,7 +12,7 @@ endif
 PROJECT_OBJS = \
 	project/Display.cpp.o \
 	project/Sensors.cpp.o \
-	project/main.cpp.o \
+	project/ThermometerHygrometer.cpp.o \
 
 PLATFORM_CORE_OBJS = \
 	core/abi.cpp.o \
@@ -88,13 +88,13 @@ project/Sensors.cpp.d: ;
 
 -include project/Sensors.cpp.d 
 
-project/main.cpp.o: ../../main.cpp project/main.cpp.d
+project/ThermometerHygrometer.cpp.o: ../../ThermometerHygrometer.cpp project/ThermometerHygrometer.cpp.d
 	@$(call mymkdir,$(dir $@))
 	"C:/Users/Gabriel/.arduinocdt/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/bin/avr-g++" -c -g -Os -w -std=gnu++11 -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD -flto -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO=10608 -DARDUINO_AVR_NANO -DARDUINO_ARCH_AVR   -I"C:/Users/Gabriel/.arduinocdt/packages/arduino/hardware/avr/1.6.21/cores/arduino" -I"C:/Users/Gabriel/.arduinocdt/packages/arduino/hardware/avr/1.6.21/variants/eightanaloginputs" -I"C:/Users/Gabriel/.arduinocdt/libraries/DHT_sensor_library/1.3.2" -I"C:/Users/Gabriel/.arduinocdt/libraries/Adafruit_Unified_Sensor/1.0.2" -I"C:/Users/Gabriel/.arduinocdt/libraries/LiquidCrystal/1.0.7/src" "$<" -o "$@"
 
-project/main.cpp.d: ;
+project/ThermometerHygrometer.cpp.d: ;
 
--include project/main.cpp.d 
+-include project/ThermometerHygrometer.cpp.d 
 
 
 core/abi.cpp.o: C:/Users/Gabriel/.arduinocdt/packages/arduino/hardware/avr/1.6.21/cores/arduino/abi.cpp core/abi.cpp.d

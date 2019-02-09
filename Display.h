@@ -11,8 +11,9 @@
 #ifndef Display_h
 #define Display_h
 
-#include <Streaming.h>
 #include <stdint.h>
+#include <Arduino.h>
+#include <Streaming.h>
 #include <LiquidCrystal.h>
 
 namespace ns_out
