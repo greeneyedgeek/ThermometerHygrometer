@@ -1,6 +1,6 @@
 # Thermometer Hygrometer
 
-<p>The intent of this project is to build a small weather station that measures temperature and air humidity using Arduino. The code was designed with scalability in mind.</p>
+<p>The intent of this project is to build a small weather station that measures temperature and air humidity. </p>
 
 <h2>Hardware Required</h2>
 
