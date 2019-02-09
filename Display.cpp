@@ -24,7 +24,7 @@ LiquidCrystal Display::lcd(RS, EN, D4, D5, D6, D7);
 void Display::init_output()
 {
 	lcd.begin(LCD_LENGHT, LCD_HEIGHT);
-	lcd << "WEATHER STATION";
+	lcd << "WEATHER STATION!";
 
 	Serial.begin(9600);
 }
@@ -78,7 +78,7 @@ void Display::lcd_stats_hum(float max_humidity, float min_humidity)
 	lcd
 	<< _FLOAT(min_humidity, 2)
 	<< " -> " << _FLOAT(max_humidity, 2)
-	<< " %";
+	<< "%";
 
 }
 

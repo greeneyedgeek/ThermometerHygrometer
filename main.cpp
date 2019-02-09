@@ -3,7 +3,7 @@
 	Project:	ThermometerHygrometer
 	File:		main.cpp
 	Created:	2019-01-26
-	Modified:	2019-02-07
+	Modified:	2019-02-08
 	Author:		Gabriel Fontaine-Escobar
 
 	LCD Hello World example code was used as a starting point.
@@ -66,15 +66,12 @@ bool is_display_stats{false};
 // Updates the temperature and humidity data to the LCD and Serial
 void update()
 {
-	// To store our current data
-	float current_temperature{sensors.update_temperature()};
-	float current_humidity{sensors.update_humidity()};
-	float current_heat_index{sensors.update_heat_index(&current_temperature, &current_humidity)};
+	sensors.update();
 
 	// Output data
-	display.lcd_out(current_temperature, current_humidity, sensors.get_units());
-	display.lcd_heat_index(current_heat_index, sensors.get_units());
-	display.serial_out(current_temperature, current_humidity, current_heat_index, sensors.get_units());
+	display.lcd_out(sensors.get_current_temperature(), sensors.get_current_humidity(), sensors.get_units());
+	display.lcd_heat_index(sensors.get_heat_index(), sensors.get_units());
+	display.serial_out(sensors.get_current_temperature(), sensors.get_current_humidity(), sensors.get_heat_index(), sensors.get_units());
 
 	// Reset the timer
 	timer = millis();

@@ -3,7 +3,7 @@
 	Project:	ThermometerHygrometer
 	File:		Sensors.h
 	Created:	2019-01-26
-	Modified:	2019-02-07
+	Modified:	2019-02-08
 	Author:		Gabriel Fontaine-Escobar
 
 */
@@ -20,15 +20,16 @@ namespace ns_sensors
 	{
 
 	public:
-		static float update_temperature();
-		static float update_humidity();
-		static float update_heat_index(float*, float*);
+		static void update();
+		static float get_current_temperature();
 		static float get_max_temperature();
 		static float get_min_temperature();
+		static float get_current_humidity();
 		static float get_max_humidity();
 		static float get_min_humidity();
-		static float convertCtoF(float);
-		static float convertFtoC(float);
+		static float get_heat_index();
+		static float convert_c_to_f(float);
+		static float convert_f_to_c(float);
 		static char get_units();
 		static bool get_is_fahrenheit();
 		static void toggle_units();
@@ -38,10 +39,13 @@ namespace ns_sensors
 		static const uint8_t DHTTYPE;
 		static const uint8_t DHTPIN;
 		static bool is_fahrenheit;
+		static float current_temperature;
 		static float max_temperature;
 		static float min_temperature;
+		static float current_humidity;
 		static float max_humidity;
 		static float min_humidity;
+		static float heat_index;
 
 	};
 }

@@ -3,7 +3,7 @@
 	Project:	ThermometerHygrometer
 	File:		Sensors.cpp
 	Created:	2019-01-26
-	Modified:	2019-02-07
+	Modified:	2019-02-08
 	Author:		Gabriel Fontaine-Escobar
 
 */
@@ -21,16 +21,29 @@ const uint8_t Sensors::DHTPIN{6};
 bool Sensors::is_fahrenheit{false};
 DHT Sensors::dht(DHTPIN, DHTTYPE);
 
+float Sensors::current_temperature;
+float Sensors::current_humidity;
+float Sensors::heat_index;
 float Sensors::max_temperature{MIN};
 float Sensors::min_temperature{MAX};
 float Sensors::max_humidity{MIN};
 float Sensors::min_humidity{MAX};
 
-float Sensors::update_temperature()
+void Sensors::update()
 {
-	float current_temperature = dht.readTemperature(is_fahrenheit);
+	current_temperature = dht.readTemperature(is_fahrenheit);
 	max_temperature = current_temperature > max_temperature ? current_temperature : max_temperature;
 	min_temperature = current_temperature < min_temperature ? current_temperature : min_temperature;
+
+	current_humidity = dht.readHumidity();
+	max_humidity = current_humidity > max_humidity ? current_humidity : max_humidity;
+	min_humidity = current_humidity < min_humidity ? current_humidity : min_humidity;
+
+	heat_index = dht.computeHeatIndex(current_temperature, current_humidity, is_fahrenheit);
+}
+
+float Sensors::get_current_temperature()
+{
 	return current_temperature;
 }
 
@@ -44,11 +57,8 @@ float Sensors::get_min_temperature()
 	return min_temperature;
 }
 
-float Sensors::update_humidity()
+float Sensors::get_current_humidity()
 {
-	float current_humidity = dht.readHumidity();
-	max_humidity = current_humidity > max_humidity ? current_humidity : max_humidity;
-	min_humidity = current_humidity < min_humidity ? current_humidity : min_humidity;
 	return current_humidity;
 }
 
@@ -62,17 +72,17 @@ float Sensors::get_min_humidity()
 	return min_humidity;
 }
 
-float Sensors::update_heat_index(float *ptr_temperature, float *ptr_humidity)
+float Sensors::get_heat_index()
 {
-	return dht.computeHeatIndex(*ptr_temperature, *ptr_humidity, is_fahrenheit);
+	return heat_index;
 }
 
-float Sensors::convertFtoC(float temperature)
+float Sensors::convert_f_to_c(float temperature)
 {
 	return dht.convertFtoC(temperature);
 }
 
-float Sensors::convertCtoF(float temperature)
+float Sensors::convert_c_to_f(float temperature)
 {
 	return dht.convertCtoF(temperature);
 }
@@ -92,13 +102,13 @@ void Sensors::toggle_units()
 	// Toggle between Celsius and Fahrenheit
 	if (is_fahrenheit)
 	{
-		max_temperature = convertFtoC(max_temperature);
-		min_temperature = convertFtoC(min_temperature);
+		max_temperature = convert_f_to_c(max_temperature);
+		min_temperature = convert_f_to_c(min_temperature);
 
 	} else
 	{
-		max_temperature = convertCtoF(max_temperature);
-		min_temperature = convertCtoF(min_temperature);
+		max_temperature = convert_c_to_f(max_temperature);
+		min_temperature = convert_c_to_f(min_temperature);
 	}
 
 	// Change the bool value
