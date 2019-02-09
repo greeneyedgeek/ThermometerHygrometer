@@ -6,8 +6,9 @@
 	Modified:	2019-02-09
 	Author:		Gabriel Fontaine-Escobar
 
-	LCD Hello World example code was used as a starting point.
-	http://www.arduino.cc/en/Tutorial/LiquidCrystalHelloWorld
+	The following code was used as a starting point:
+	https://github.com/arduino/ArduinoCore-avr/blob/master/cores/arduino/main.cpp
+	https://github.com/arduino-libraries/LiquidCrystal/blob/master/examples/HelloWorld/HelloWorld.ino
 
 	This code is in the public domain.
 	https://github.com/greeneyedgeek/ThermometerHygrometer
@@ -143,7 +144,8 @@ int main(void)
 	timer = millis();
 
 	// This is the main loop
-	for (;;) {
+	for (;;)
+	{
 		// Update data every minute
 		if (millis() - timer > 60*BASE_DELAY) { update(); }
 
