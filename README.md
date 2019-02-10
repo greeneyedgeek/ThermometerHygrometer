@@ -32,6 +32,6 @@
   <li><a class="urllink" href="http://www.fritzing.org" rel="nofollow" target="_blank">Fritzing</a></li>
   <li><a class="urllink" href="http://arduiniana.org/libraries/streaming/" rel="nofollow" target="_blank">Streaming library</a></li>
   <li><a class="urllink" href="http://eclipse.baeyens.it/" rel="nofollow" target="_blank">Sloeber IDE for Arduino</a></li>
-  <li><a class="urllink" href="https://marketplace.eclipse.org/content/eclipse-c-ide-arduino" rel="nofollow" target="_blank">C++ IDE for Arduino</a></li>
+  <li><a class="urllink" href="https://www.eclipse.org/downloads/packages/release/2018-12/r/eclipse-ide-cc-developers" rel="nofollow" target="_blank">Eclipse IDE for C/C++ Developers</a></li>
 </ul>
 
