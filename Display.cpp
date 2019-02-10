@@ -24,8 +24,9 @@ LiquidCrystal Display::lcd(RS, EN, D4, D5, D6, D7);
 void Display::init_output()
 {
 	lcd.begin(LCD_LENGHT, LCD_HEIGHT);
-	lcd << "WEATHER STATION!";
-
+	lcd << "WEATHER STATION";
+	lcd.setCursor(0, 1);
+	lcd << "v0.1.2";
 	Serial.begin(9600);
 }
 
