@@ -3,7 +3,7 @@
 	Project:	ThermometerHygrometer
 	File:		Display.cpp
 	Created:	2019-01-26
-	Modified:	2019-02-07
+	Modified:	2019-02-11
 	Author:		Gabriel Fontaine-Escobar
 
 */

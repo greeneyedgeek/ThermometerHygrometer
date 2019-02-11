@@ -3,7 +3,7 @@
 	Project:	ThermometerHygrometer
 	File:		ThermometerHygrometer.cpp
 	Created:	2019-01-26
-	Modified:	2019-02-09
+	Modified:	2019-02-11
 	Author:		Gabriel Fontaine-Escobar
 
 	The following code was used as a starting point:

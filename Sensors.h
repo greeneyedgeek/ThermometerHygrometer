@@ -3,7 +3,7 @@
 	Project:	ThermometerHygrometer
 	File:		Sensors.h
 	Created:	2019-01-26
-	Modified:	2019-02-08
+	Modified:	2019-02-11
 	Author:		Gabriel Fontaine-Escobar
 
 */
