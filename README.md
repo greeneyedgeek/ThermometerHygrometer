@@ -34,17 +34,20 @@ RW                | GND
 VSS               | Gnd
 VCC               | 5V
 V0                | 10K Resistor (ends 5V/GND)
+<img width=200/>|<img width=200/>|
 
 DHT22 Sensor 	  | Arduino Nano
 ------------------|------------
 DATA              | 6
 VCC               | 3.3V 
 GND               | GND
+<img width=200/>|<img width=200/>|
 
 Switches  		  | Arduino Nano
 ------------------|------------
 Switch A          | 2 
 Switch B          | 8
+<img width=200/>|<img width=200/>|
 
 <!--
 <h2>Schematic</h2>
