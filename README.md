@@ -35,13 +35,13 @@ VSS               | Gnd
 VCC               | 5V
 V0                | 10K Resistor (ends 5V/GND)
   
-DHT22 Sensor&nbsp;&nbsp;| Arduino Nano
+DHT22 Sensor&nbsp;&nbsp;| Arduino Nano&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 ------------------|------------
 DATA              | 6
 VCC               | 3.3V 
 GND               | GND
 
-Switches&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Arduino Nano
+Switches&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Arduino Nano&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 ------------------|------------
 Switch A          | 2 
 Switch B          | 8
