@@ -22,7 +22,7 @@
 
 <img src="https://github.com/greeneyedgeek/Arduino-Weather-Station/blob/master/circuit.png" alt="" class="mr-2 header-search-key-slash">
   
-LCD Screen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Arduino Nano
+LCD Screen &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| Arduino Nano
 ------------------|------------
 RS                | 12 
 EN                | 11
@@ -35,13 +35,13 @@ VSS               | Gnd
 VCC               | 5V
 V0                | 10K Resistor (ends 5V/GND)
   
-DHT22 Sensor&nbsp;&nbsp;| Arduino Nano&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DHT22 Sensor &nbsp; &nbsp; &nbsp;| Arduino Nano
 ------------------|------------
 DATA              | 6
 VCC               | 3.3V 
 GND               | GND
 
-Switches&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Arduino Nano&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Switches &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| Arduino Nano
 ------------------|------------
 Switch A          | 2 
 Switch B          | 8
