@@ -21,9 +21,8 @@
 <h2>Circuit</h2>
 
 <img src="https://github.com/greeneyedgeek/Arduino-Weather-Station/blob/master/circuit.png" alt="" class="mr-2 header-search-key-slash">
-
-<div class="circuit">  
-LCD Screen		  | Arduino Nano
+  
+LCD Screen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Arduino Nano
 ------------------|------------
 RS                | 12 
 EN                | 11
@@ -36,17 +35,17 @@ VSS               | Gnd
 VCC               | 5V
 V0                | 10K Resistor (ends 5V/GND)
   
-DHT22 Sensor 	  | Arduino Nano
+DHT22 Sensor&nbsp;&nbsp;&nbsp;| Arduino Nano
 ------------------|------------
 DATA              | 6
 VCC               | 3.3V 
 GND               | GND
 
-Switches  		  | Arduino Nano
+Switches&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Arduino Nano
 ------------------|------------
 Switch A          | 2 
 Switch B          | 8
-</div>
+
 <!--
 <h2>Schematic</h2>
 <h2>Code</h2>
@@ -59,8 +58,3 @@ Switch B          | 8
   <li><a class="urllink" href="http://eclipse.baeyens.it/" rel="nofollow" target="_blank">Sloeber IDE for Arduino</a></li>
   <li><a class="urllink" href="https://www.eclipse.org/downloads/packages/release/2018-12/r/eclipse-ide-cc-developers" rel="nofollow" target="_blank">Eclipse IDE for C/C++ Developers</a></li>
 </ul>
-
-<style>
-  .circuit table {
-  width: 500px;
-</style>
