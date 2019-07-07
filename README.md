@@ -20,7 +20,7 @@
 
 <h2>Circuit</h2>
 
-<img src="https://github.com/greeneyedgeek/ThermometerHygrometer/blob/master/circuit.png" alt="" class="mr-2 header-search-key-slash">
+<img src="https://github.com/greeneyedgeek/ThermometerHygrometer/blob/master/circuit.png" alt="">
   
 LCD Screen &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | Arduino Nano
 ------------------|------------
