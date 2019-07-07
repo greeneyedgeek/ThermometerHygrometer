@@ -34,7 +34,7 @@
 
 */
 
-// Include the contents of a these files
+// Include the contents of these files
 #include <Arduino.h>
 #include "Display.h"
 #include "Sensors.h"
